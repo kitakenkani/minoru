@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ブランドカラー（ロゴのティール） */
+  --color-brand-50: #edfafa;
+  --color-brand-100: #d0f2f0;
+  --color-brand-200: #a0e5e0;
+  --color-brand-300: #5dcfc8;
+  --color-brand-400: #2ab8b0;
+  --color-brand-500: #009B8D;
+  --color-brand-600: #00877a;
+  --color-brand-700: #006d63;
+  --color-brand-800: #005550;
+  --color-brand-900: #003d39;
+
+  /* ニュートラル（クリーム寄り） */
+  --color-cream-50: #fafaf7;
+  --color-cream-100: #f4f4ef;
+  --color-cream-200: #e8e8e0;
+  --color-cream-300: #d4d4ca;
+
+  --font-serif: var(--font-noto-serif-jp), serif;
+}
+
+body {
+  background-color: var(--color-cream-50);
+  color: #1c1c1c;
+}
