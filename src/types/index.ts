@@ -56,6 +56,7 @@ export interface SiteSettings {
   parking?: string;
   googleMapUrl?: string;
   instagramUrl?: string;
+  email?: string;
   mainVisual?: SanityImage;
   contactText?: string;
 }

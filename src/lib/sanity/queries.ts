@@ -12,6 +12,7 @@ export const siteSettingsQuery = groq`
     parking,
     googleMapUrl,
     instagramUrl,
+    email,
     mainVisual,
     contactText
   }

@@ -58,6 +58,12 @@ export const siteSettings = defineType({
       type: "url",
     }),
     defineField({
+      name: "email",
+      title: "メールアドレス",
+      type: "string",
+      validation: (Rule) => Rule.email(),
+    }),
+    defineField({
       name: "mainVisual",
       title: "メインビジュアル",
       type: "image",
