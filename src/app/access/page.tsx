@@ -85,6 +85,25 @@ export default async function AccessPage() {
                 />
               </div>
             )}
+
+            {(settings.contactText || settings.email) && (
+              <div className="rounded-lg bg-white p-6 shadow-sm border border-cream-200 text-center">
+                <h2 className="mb-3 text-sm font-medium tracking-wider text-brand-600">
+                  お問い合わせ
+                </h2>
+                {settings.contactText && (
+                  <p className="mb-3 text-sm text-stone-600">{settings.contactText}</p>
+                )}
+                {settings.email && (
+                  <a
+                    href={`mailto:${settings.email}`}
+                    className="text-sm text-brand-500 underline underline-offset-2 hover:text-brand-700"
+                  >
+                    {settings.email}
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         ) : (
           <p className="text-sm text-stone-400">情報を取得できませんでした</p>
