@@ -11,11 +11,22 @@ const notoSerifJP = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: {
     default: "MINORU cafe",
     template: "%s | MINORU cafe",
   },
   description: "MINORU cafe の公式サイト",
+  openGraph: {
+    siteName: "MINORU cafe",
+    locale: "ja_JP",
+    type: "website",
+    title: "MINORU cafe",
+    description: "MINORU cafe の公式サイト",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

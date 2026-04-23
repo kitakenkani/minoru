@@ -9,7 +9,12 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "メニュー",
-  description: "MINORU cafe のメニュー一覧",
+  description: "MINORU cafe のメニュー一覧。ワッフル・ドリンク・フードなど。",
+  openGraph: {
+    title: "メニュー | MINORU cafe",
+    description: "MINORU cafe のメニュー一覧。ワッフル・ドリンク・フードなど。",
+    url: "/menu",
+  },
 };
 
 const categoryLabels: Record<string, string> = {

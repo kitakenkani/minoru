@@ -25,9 +25,27 @@ export async function generateMetadata({
   const news = await getNewsDetail(slug);
   if (!news) return {};
 
+  const title = news.seoTitle ?? news.title;
+  const description = news.seoDescription ?? news.excerpt;
+
   return {
-    title: news.seoTitle ?? news.title,
-    description: news.seoDescription ?? news.excerpt,
+    title,
+    description,
+    openGraph: {
+      title: `${title} | MINORU cafe`,
+      description: description ?? undefined,
+      type: "article",
+      url: `/news/${slug}`,
+      ...(news.mainImage && {
+        images: [
+          {
+            url: urlFor(news.mainImage).width(1200).height(630).url(),
+            width: 1200,
+            height: 630,
+          },
+        ],
+      }),
+    },
   };
 }
 
@@ -41,8 +59,25 @@ export default async function NewsDetailPage({
 
   if (!news) notFound();
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: news.title,
+    datePublished: news.publishedAt,
+    publisher: { "@type": "Organization", name: "MINORU cafe", url: siteUrl },
+    ...(news.excerpt && { description: news.excerpt }),
+    ...(news.mainImage && {
+      image: urlFor(news.mainImage).width(1200).height(630).url(),
+    }),
+  };
+
   return (
     <Container className="py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="mx-auto max-w-2xl">
         <div className="mb-4 flex items-center gap-3">
           <time className="text-sm text-stone-400">

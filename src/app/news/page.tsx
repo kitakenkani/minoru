@@ -7,7 +7,12 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "お知らせ",
-  description: "MINORU cafe からのお知らせ・プレス情報",
+  description: "MINORU cafe からのお知らせ・イベント情報",
+  openGraph: {
+    title: "お知らせ | MINORU cafe",
+    description: "MINORU cafe からのお知らせ・イベント情報",
+    url: "/news",
+  },
 };
 
 export default async function NewsPage() {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
@@ -7,14 +8,39 @@ import { urlFor } from "@/lib/sanity/image";
 
 export const revalidate = 300;
 
+export const metadata: Metadata = {
+  title: "MINORU cafe",
+  description: "地域にひらかれた小さなカフェ。ワッフルやドリンクをゆっくりお楽しみください。",
+  openGraph: {
+    title: "MINORU cafe",
+    description: "地域にひらかれた小さなカフェ。ワッフルやドリンクをゆっくりお楽しみください。",
+    url: "/",
+  },
+};
+
 export default async function HomePage() {
   const [settings, latestNews] = await Promise.all([
     getSiteSettings(),
     getLatestNews(),
   ]);
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    name: "MINORU cafe",
+    url: siteUrl,
+    ...(settings?.address && { address: { "@type": "PostalAddress", streetAddress: settings.address } }),
+    ...(settings?.businessHours && { openingHours: settings.businessHours }),
+    ...(settings?.instagramUrl && { sameAs: [settings.instagramUrl] }),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
       {/* ヒーローセクション */}
       <section className="relative bg-brand-500">
         {settings?.mainVisual ? (

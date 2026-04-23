@@ -6,7 +6,12 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "アクセス",
-  description: "MINORU cafe へのアクセス・営業時間",
+  description: "MINORU cafe へのアクセス・営業時間・定休日",
+  openGraph: {
+    title: "アクセス | MINORU cafe",
+    description: "MINORU cafe へのアクセス・営業時間・定休日",
+    url: "/access",
+  },
 };
 
 export default async function AccessPage() {

@@ -6,6 +6,11 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "カフェについて",
   description: "MINORU cafe のコンセプト・空間・地域との関わりについて",
+  openGraph: {
+    title: "カフェについて | MINORU cafe",
+    description: "MINORU cafe のコンセプト・空間・地域との関わりについて",
+    url: "/about",
+  },
 };
 
 export default function AboutPage() {
