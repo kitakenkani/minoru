@@ -6,7 +6,13 @@ import dayjs from "dayjs";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/common/Badge";
 import { PortableTextRenderer } from "@/components/news/PortableTextRenderer";
-import { getNewsDetail, getNewsSlugs } from "@/lib/sanity/fetchers";
+import { NewsCard } from "@/components/news/NewsCard";
+import {
+  getNewsDetail,
+  getNewsSlugs,
+  getRelatedNews,
+  getSiteSettings,
+} from "@/lib/sanity/fetchers";
 import { urlFor } from "@/lib/sanity/image";
 
 export const revalidate = 300;
@@ -55,9 +61,16 @@ export default async function NewsDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const news = await getNewsDetail(slug);
+  const [news, settings] = await Promise.all([
+    getNewsDetail(slug),
+    getSiteSettings(),
+  ]);
 
   if (!news) notFound();
+
+  const relatedNews = news.category?.slug?.current
+    ? await getRelatedNews(slug, news.category.slug.current)
+    : [];
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const articleJsonLd = {
@@ -103,6 +116,71 @@ export default async function NewsDetailPage({
         )}
 
         <PortableTextRenderer value={news.body} />
+
+        {settings && (
+          <div className="mt-12">
+            <h2 className="mb-3 text-sm font-medium tracking-wider text-stone-500">
+              アクセス
+            </h2>
+            <div className="overflow-hidden rounded-lg border border-cream-200 shadow-sm">
+              {settings.googleMapUrl && (
+                <iframe
+                  src={settings.googleMapUrl}
+                  width="100%"
+                  height="280"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Google Map"
+                />
+              )}
+              <dl className="divide-y divide-cream-200 bg-white px-5 py-1">
+                {settings.address && (
+                  <div className="grid grid-cols-[5rem_1fr] gap-2 py-3">
+                    <dt className="text-xs text-stone-400">住所</dt>
+                    <dd className="text-xs text-stone-700">{settings.address}</dd>
+                  </div>
+                )}
+                {settings.businessHours && (
+                  <div className="grid grid-cols-[5rem_1fr] gap-2 py-3">
+                    <dt className="text-xs text-stone-400">営業時間</dt>
+                    <dd className="whitespace-pre-line text-xs text-stone-700">
+                      {settings.businessHours}
+                    </dd>
+                  </div>
+                )}
+                {settings.holiday && (
+                  <div className="grid grid-cols-[5rem_1fr] gap-2 py-3">
+                    <dt className="text-xs text-stone-400">定休日</dt>
+                    <dd className="text-xs text-stone-700">{settings.holiday}</dd>
+                  </div>
+                )}
+                {settings.parking && (
+                  <div className="grid grid-cols-[5rem_1fr] gap-2 py-3">
+                    <dt className="text-xs text-stone-400">駐車場</dt>
+                    <dd className="whitespace-pre-line text-xs text-stone-700">
+                      {settings.parking}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            </div>
+          </div>
+        )}
+
+        {relatedNews.length > 0 && (
+          <div className="mt-12">
+            <h2 className="mb-4 text-sm font-medium tracking-wider text-stone-500">
+              関連記事
+            </h2>
+            <div className="divide-y divide-cream-200">
+              {relatedNews.map((item) => (
+                <NewsCard key={item._id} news={item} />
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-12 border-t border-cream-200 pt-8">
           <Link

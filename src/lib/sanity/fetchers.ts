@@ -5,6 +5,7 @@ import {
   newsDetailQuery,
   newsListQuery,
   newsSlugsQuery,
+  relatedNewsQuery,
   siteSettingsQuery,
 } from "./queries";
 import type { MenuItem, NewsDetail, NewsSummary, SiteSettings } from "@/types";
@@ -38,6 +39,18 @@ export async function getNewsDetail(slug: string): Promise<NewsDetail | null> {
 export async function getNewsSlugs(): Promise<{ slug: string }[]> {
   if (!isSanityConfigured()) return [];
   return client.fetch(newsSlugsQuery, {}, { next: { revalidate } });
+}
+
+export async function getRelatedNews(
+  slug: string,
+  categorySlug: string
+): Promise<NewsSummary[]> {
+  if (!isSanityConfigured()) return [];
+  return client.fetch(
+    relatedNewsQuery,
+    { slug, categorySlug },
+    { next: { revalidate } }
+  );
 }
 
 export async function getMenuItems(): Promise<MenuItem[]> {

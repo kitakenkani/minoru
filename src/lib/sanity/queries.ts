@@ -75,6 +75,22 @@ export const newsSlugsQuery = groq`
   *[_type == "news"] { "slug": slug.current }
 `;
 
+// 関連記事（同カテゴリ・現記事除外・最新3件）
+export const relatedNewsQuery = groq`
+  *[_type == "news" && slug.current != $slug && category->slug.current == $categorySlug] | order(publishedAt desc) [0...3] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    mainImage,
+    category-> {
+      title,
+      slug
+    }
+  }
+`;
+
 // メニュー一覧（公開中のみ）
 export const menuItemsQuery = groq`
   *[_type == "menuItem" && isPublished == true] | order(category asc, sortOrder asc) {
