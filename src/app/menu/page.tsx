@@ -68,8 +68,8 @@ export default async function MenuPage() {
                   </div>
                 )}
                 <div className="flex flex-col gap-1">
-                  <div className="flex items-center gap-2">
-                    <p className="font-medium text-stone-800">{item.name}</p>
+                  <div className="flex items-start gap-2">
+                    <p className="flex-1 min-w-0 font-medium text-stone-800">{item.name}</p>
                     {item.isSeasonal && <Badge label="季節限定" />}
                   </div>
                   {item.description && (
