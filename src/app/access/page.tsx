@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
+import { ParkingGuide } from "@/components/access/ParkingGuide";
 import { getSiteSettings } from "@/lib/sanity/fetchers";
 
 export const revalidate = 300;
@@ -90,6 +91,8 @@ export default async function AccessPage() {
                 />
               </div>
             )}
+
+            <ParkingGuide />
 
             {(settings.contactText || settings.email) && (
               <div className="rounded-lg bg-white p-6 shadow-sm border border-cream-200 text-center">
