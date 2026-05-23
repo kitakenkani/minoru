@@ -54,6 +54,8 @@ export interface SiteSettings {
   businessHours: string;
   holiday?: string;
   parking?: string;
+  parkingGuideImage?: SanityImage;
+  parkingGuideImageAlt?: string;
   googleMapUrl?: string;
   instagramUrl?: string;
   email?: string;

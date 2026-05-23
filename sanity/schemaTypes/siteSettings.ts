@@ -48,6 +48,19 @@ export const siteSettings = defineType({
       rows: 3,
     }),
     defineField({
+      name: "parkingGuideImage",
+      title: "駐車場案内画像",
+      type: "image",
+      options: { hotspot: true },
+      description: "アクセスページの駐車場案内図として表示します。",
+    }),
+    defineField({
+      name: "parkingGuideImageAlt",
+      title: "駐車場案内画像の代替テキスト",
+      type: "string",
+      description: "未入力の場合は標準の説明文を使用します。",
+    }),
+    defineField({
       name: "googleMapUrl",
       title: "Google Map 埋め込み URL",
       type: "url",

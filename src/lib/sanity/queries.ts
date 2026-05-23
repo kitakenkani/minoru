@@ -10,6 +10,8 @@ export const siteSettingsQuery = groq`
     businessHours,
     holiday,
     parking,
+    parkingGuideImage,
+    parkingGuideImageAlt,
     googleMapUrl,
     instagramUrl,
     email,

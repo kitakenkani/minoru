@@ -92,7 +92,10 @@ export default async function AccessPage() {
               </div>
             )}
 
-            <ParkingGuide />
+            <ParkingGuide
+              image={settings.parkingGuideImage}
+              imageAlt={settings.parkingGuideImageAlt}
+            />
 
             {(settings.contactText || settings.email) && (
               <div className="rounded-lg bg-white p-6 shadow-sm border border-cream-200 text-center">
