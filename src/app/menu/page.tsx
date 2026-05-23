@@ -62,9 +62,9 @@ export default async function MenuPage() {
                 className="flex gap-4 rounded-lg bg-white p-4 shadow-sm border border-cream-200"
               >
                 {item.image && (
-                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded">
+                  <div className="relative w-20 shrink-0 overflow-hidden rounded">
                     <Image
-                      src={urlFor(item.image).width(80).height(80).url()}
+                      src={urlFor(item.image).width(80).height(160).url()}
                       alt={item.name}
                       fill
                       unoptimized
