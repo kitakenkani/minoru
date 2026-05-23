@@ -23,6 +23,7 @@ export const menuItem = defineType({
       type: "string",
       options: {
         list: [
+          { title: "季節限定", value: "seasonal" },
           { title: "ワッフル", value: "waffle" },
           { title: "ドリンク", value: "drink" },
           { title: "フード", value: "food" },

@@ -17,7 +17,10 @@ export const metadata: Metadata = {
   },
 };
 
+const categoryOrder = ["seasonal", "waffle", "drink", "food", "dessert", "other"];
+
 const categoryLabels: Record<string, string> = {
+  seasonal: "季節限定",
   waffle: "ワッフル",
   drink: "ドリンク",
   food: "フード",
@@ -45,7 +48,9 @@ export default async function MenuPage() {
         <p className="text-sm text-stone-400">現在メニュー情報はありません</p>
       )}
 
-      {Object.entries(grouped).map(([category, categoryItems]) => (
+      {categoryOrder.filter((cat) => grouped[cat]).map((category) => {
+        const categoryItems = grouped[category];
+        return (
         <section key={category} className="mb-12">
           <h2 className="mb-6 border-b border-brand-100 pb-2 text-lg font-medium text-brand-600">
             {categoryLabels[category] ?? category}
@@ -87,7 +92,8 @@ export default async function MenuPage() {
             ))}
           </div>
         </section>
-      ))}
+        );
+      })}
     </Container>
   );
 }
