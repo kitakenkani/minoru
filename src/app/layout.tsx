@@ -3,6 +3,7 @@ import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { getSiteSettings } from "@/lib/sanity/fetchers";
 
 const notoSerifJP = Noto_Serif_JP({
   subsets: ["latin"],
@@ -29,15 +30,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await getSiteSettings();
+
   return (
     <html lang="ja" className={`${notoSerifJP.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-stone-50 font-serif text-stone-800">
-        <Header />
+        <Header instagramUrl={settings?.instagramUrl} />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

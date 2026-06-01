@@ -10,12 +10,16 @@ const navItems = [
   { label: "アクセス", href: "/access" },
 ];
 
-export function Header() {
+interface HeaderProps {
+  instagramUrl?: string;
+}
+
+export function Header({ instagramUrl }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="border-b border-brand-100 bg-white">
-      <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-4">
         <Link
           href="/"
           className="text-lg font-medium tracking-widest text-brand-600"
@@ -26,7 +30,7 @@ export function Header() {
 
         {/* デスクトップ用ナビ */}
         <nav className="hidden sm:block">
-          <ul className="flex gap-6">
+          <ul className="flex items-center gap-6">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
@@ -37,6 +41,18 @@ export function Header() {
                 </Link>
               </li>
             ))}
+            {instagramUrl && (
+              <li>
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-8 items-center rounded-full border border-brand-200 px-3 text-xs tracking-wide text-brand-600 transition-colors hover:border-brand-400 hover:bg-brand-50 hover:text-brand-700"
+                >
+                  Instagram
+                </a>
+              </li>
+            )}
           </ul>
         </nav>
 
@@ -80,6 +96,19 @@ export function Header() {
                 </Link>
               </li>
             ))}
+            {instagramUrl && (
+              <li>
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-6 py-4 text-sm text-brand-600 hover:bg-brand-50 hover:text-brand-700"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Instagram
+                </a>
+              </li>
+            )}
           </ul>
         </nav>
       )}
