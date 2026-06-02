@@ -22,7 +22,7 @@ export function Header({ instagramUrl }: HeaderProps) {
       <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-4">
         <Link
           href="/"
-          className="text-lg font-medium tracking-widest text-brand-600"
+          className="text-base font-medium tracking-widest text-brand-600 sm:text-lg"
           onClick={() => setIsOpen(false)}
         >
           MINORU cafe
@@ -56,29 +56,42 @@ export function Header({ instagramUrl }: HeaderProps) {
           </ul>
         </nav>
 
-        {/* ハンバーガーボタン（モバイルのみ表示） */}
-        <button
-          className="sm:hidden flex flex-col gap-1.5 p-1"
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
-          aria-expanded={isOpen}
-        >
-          <span
-            className={`block h-0.5 w-5 bg-stone-600 transition-transform duration-200 ${
-              isOpen ? "translate-y-2 rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-5 bg-stone-600 transition-opacity duration-200 ${
-              isOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-5 bg-stone-600 transition-transform duration-200 ${
-              isOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
-        </button>
+        <div className="flex items-center gap-3 sm:hidden">
+          {instagramUrl && (
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-9 items-center rounded-full border border-brand-200 px-3 text-xs tracking-wide text-brand-600"
+            >
+              Instagram
+            </a>
+          )}
+
+          {/* ハンバーガーボタン（モバイルのみ表示） */}
+          <button
+            className="flex flex-col gap-1.5 p-1"
+            onClick={() => setIsOpen((prev) => !prev)}
+            aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
+            aria-expanded={isOpen}
+          >
+            <span
+              className={`block h-0.5 w-5 bg-stone-600 transition-transform duration-200 ${
+                isOpen ? "translate-y-2 rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-5 bg-stone-600 transition-opacity duration-200 ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-5 bg-stone-600 transition-transform duration-200 ${
+                isOpen ? "-translate-y-2 -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
       </div>
 
       {/* モバイル用ナビ */}
