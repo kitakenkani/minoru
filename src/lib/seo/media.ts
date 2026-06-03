@@ -91,6 +91,66 @@ export const defaultMediaMentions: MediaMention[] = [
     description:
       "Lemon8上で、MINORU cafeに関連する投稿や紹介が見つかるページです。",
   },
+  {
+    _id: "default-instagram-miyasan-gunma-gourmet-2026",
+    title: "Instagramで紹介されました",
+    publisher: "Instagram / 宮さん｜群馬グルメ・スポット",
+    publishedAt: "2026",
+    url: "https://www.instagram.com/reel/DYD-9h_z0zP/",
+    category: "SNS紹介",
+    description:
+      "群馬グルメ・スポット紹介のInstagram Reelで、MINORU cafeを紹介いただきました。",
+  },
+  {
+    _id: "default-instagram-dxjxojfkqeq-2026",
+    title: "Instagram Reelで紹介されました",
+    publisher: "Instagram / 群馬もぐもぐ【群馬グルメ】",
+    publishedAt: "2026",
+    url: "https://www.instagram.com/reel/DXjXOjfkqeq/",
+    category: "SNS紹介",
+    description:
+      "群馬グルメ紹介のInstagram Reelで、MINORU cafeを紹介いただきました。",
+  },
+  {
+    _id: "default-instagram-dwfsqkxawfc-2026",
+    title: "Instagram投稿で紹介されました",
+    publisher: "Instagram / だるがん君【群馬グルメ】",
+    publishedAt: "2026",
+    url: "https://www.instagram.com/p/DWfSQkXAWfC/",
+    category: "SNS紹介",
+    description:
+      "群馬グルメ紹介のInstagram投稿で、MINORU cafeを紹介いただきました。",
+  },
+  {
+    _id: "default-instagram-dvoneu2ewd9-2026",
+    title: "Instagram投稿で紹介されました",
+    publisher: "Instagram / URON（うーろん）",
+    publishedAt: "2026",
+    url: "https://www.instagram.com/p/DVONEu2EWd9/",
+    category: "SNS紹介",
+    description:
+      "群馬カフェ・グルメ紹介のInstagram投稿で、MINORU cafeを紹介いただきました。",
+  },
+  {
+    _id: "default-instagram-du7-sg0eech-2026",
+    title: "Instagram Reelで紹介されました",
+    publisher: "Instagram / URON（うーろん）",
+    publishedAt: "2026",
+    url: "https://www.instagram.com/reel/DU7_sg0EeCH/",
+    category: "SNS紹介",
+    description:
+      "群馬カフェ・グルメ紹介のInstagram Reelで、MINORU cafeを紹介いただきました。",
+  },
+  {
+    _id: "default-instagram-dvgkz1pkotk-2026",
+    title: "Instagram Reelで紹介されました",
+    publisher: "Instagram / さと 群馬パン屋・カフェ日記",
+    publishedAt: "2026",
+    url: "https://www.instagram.com/reel/DVGKZ1PkoTK/",
+    category: "SNS紹介",
+    description:
+      "群馬のパン屋・カフェ紹介のInstagram Reelで、MINORU cafeを紹介いただきました。",
+  },
 ];
 
 export function resolveMediaMentions(mentions: MediaMention[]) {
