@@ -8,11 +8,11 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "よくある質問",
   description:
-    "MINORU cafeの場所、駐車場、営業時間、定休日、メニュー、最新情報についてのよくある質問。",
+    "MINORU cafeの場所、駐車場、営業時間、予約、テイクアウト、支払い方法、子ども連れや車いすでの利用についてのよくある質問。",
   openGraph: {
     title: "よくある質問 | MINORU cafe",
     description:
-      "MINORU cafeの場所、駐車場、営業時間、定休日、メニュー、最新情報についてのよくある質問。",
+      "MINORU cafeの場所、駐車場、営業時間、予約、テイクアウト、支払い方法、子ども連れや車いすでの利用についてのよくある質問。",
     url: "/faq",
   },
 };
@@ -31,7 +31,8 @@ export default function FaqPage() {
           よくある質問
         </h1>
         <p className="mb-10 text-sm leading-7 text-stone-600">
-          MINORU cafeの場所、駐車場、営業時間、メニュー、最新情報についてまとめました。
+          MINORU cafeの場所、駐車場、営業時間、予約、テイクアウト、支払い方法、
+          子ども連れや車いすでの利用についてまとめました。
         </p>
 
         <div className="divide-y divide-cream-200 rounded-lg border border-cream-200 bg-white px-6 shadow-sm">

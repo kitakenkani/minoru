@@ -7,10 +7,12 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "アクセス",
-  description: "MINORU cafe へのアクセス・営業時間・定休日",
+  description:
+    "群馬県高崎市吉井町吉井396-1のMINORU cafeへのアクセス、営業時間、定休日、駐車場のご案内です。",
   openGraph: {
     title: "アクセス | MINORU cafe",
-    description: "MINORU cafe へのアクセス・営業時間・定休日",
+    description:
+      "群馬県高崎市吉井町吉井396-1のMINORU cafeへのアクセス、営業時間、定休日、駐車場のご案内です。",
     url: "/access",
   },
 };
@@ -27,6 +29,12 @@ export default async function AccessPage() {
 
         {settings ? (
           <div className="space-y-8">
+            <p className="text-sm leading-8 text-stone-600">
+              MINORU cafeは、群馬県高崎市吉井町吉井396-1にある小さなカフェです。
+              旧254号沿いにあり、吉井町周辺でのおでかけや日常の休憩にも立ち寄りやすい
+              場所にあります。ご来店前に営業時間、定休日、駐車場の場所をご確認ください。
+            </p>
+
             <dl className="divide-y divide-cream-200 rounded-lg bg-white p-6 shadow-sm border border-cream-200">
               <div className="grid grid-cols-[6rem_1fr] gap-2 py-4">
                 <dt className="text-sm text-stone-400">住所</dt>
@@ -91,6 +99,22 @@ export default async function AccessPage() {
                 />
               </div>
             )}
+
+            <section className="rounded-lg bg-white p-6 shadow-sm border border-cream-200">
+              <h2 className="mb-3 text-sm font-medium tracking-wider text-brand-600">
+                駐車場について
+              </h2>
+              <div className="space-y-3 text-sm leading-7 text-stone-600">
+                <p>
+                  駐車場は2カ所あります。店舗近くに2台、旧254号沿いのもり理容様駐車場に
+                  4台分をご用意しています。
+                </p>
+                <p>
+                  道路沿いのP看板を目印にお越しください。駐車位置は下の案内画像でも
+                  確認できます。
+                </p>
+              </div>
+            </section>
 
             <ParkingGuide
               image={settings.parkingGuideImage}
