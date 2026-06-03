@@ -34,3 +34,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## SEO / Measurement
+
+Set these environment variables in Vercel for production SEO and measurement.
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://minoru-cafe.vercel.app
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your_google_site_verification_token
+```
+
+After deployment, submit the sitemap in Google Search Console:
+
+```text
+https://minoru-cafe.vercel.app/sitemap.xml
+```

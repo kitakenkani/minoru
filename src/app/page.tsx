@@ -5,6 +5,11 @@ import { Container } from "@/components/layout/Container";
 import { NewsCard } from "@/components/news/NewsCard";
 import { getSiteSettings, getLatestNews } from "@/lib/sanity/fetchers";
 import { urlFor } from "@/lib/sanity/image";
+import {
+  buildLocalBusinessJsonLd,
+  buildWebSiteJsonLd,
+  cafeDescription,
+} from "@/lib/seo/business";
 
 export const revalidate = 300;
 
@@ -24,22 +29,18 @@ export default async function HomePage() {
     getLatestNews(),
   ]);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const localBusinessJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CafeOrCoffeeShop",
-    name: "MINORU cafe",
-    url: siteUrl,
-    ...(settings?.address && { address: { "@type": "PostalAddress", streetAddress: settings.address } }),
-    ...(settings?.businessHours && { openingHours: settings.businessHours }),
-    ...(settings?.instagramUrl && { sameAs: [settings.instagramUrl] }),
-  };
+  const localBusinessJsonLd = buildLocalBusinessJsonLd(settings);
+  const webSiteJsonLd = buildWebSiteJsonLd();
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
       />
       {/* ヒーローセクション */}
       <section className="relative bg-brand-500">
@@ -75,6 +76,20 @@ export default async function HomePage() {
             )}
           </div>
         )}
+      </section>
+
+      {/* 店舗紹介 */}
+      <section className="border-b border-cream-200 py-14">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="mb-5 text-lg font-medium tracking-wider text-brand-700">
+              群馬県高崎市吉井町の小さなカフェ
+            </h2>
+            <p className="text-sm leading-8 text-stone-700">
+              {cafeDescription}
+            </p>
+          </div>
+        </Container>
       </section>
 
       {/* お知らせセクション */}

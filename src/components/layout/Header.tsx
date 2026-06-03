@@ -8,6 +8,7 @@ const navItems = [
   { label: "カフェについて", href: "/about" },
   { label: "メニュー", href: "/menu" },
   { label: "アクセス", href: "/access" },
+  { label: "よくある質問", href: "/faq" },
 ];
 
 interface HeaderProps {
