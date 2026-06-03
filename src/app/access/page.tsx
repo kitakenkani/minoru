@@ -2,20 +2,17 @@ import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { ParkingGuide } from "@/components/access/ParkingGuide";
 import { getSiteSettings } from "@/lib/sanity/fetchers";
+import { createPageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "アクセス",
   description:
-    "群馬県高崎市吉井町吉井396-1のMINORU cafeへのアクセス、営業時間、定休日、駐車場のご案内です。",
-  openGraph: {
-    title: "アクセス | MINORU cafe",
-    description:
-      "群馬県高崎市吉井町吉井396-1のMINORU cafeへのアクセス、営業時間、定休日、駐車場のご案内です。",
-    url: "/access",
-  },
-};
+    "群馬県高崎市吉井町吉井396-1のMINORU cafeへのアクセス、営業時間、定休日、駐車場、Googleマップのご案内です。",
+  path: "/access",
+  keywords: ["MINORU cafe アクセス", "吉井町 駐車場 カフェ", "旧254号"],
+});
 
 export default async function AccessPage() {
   const settings = await getSiteSettings();

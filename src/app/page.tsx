@@ -14,17 +14,37 @@ import {
   buildWebSiteJsonLd,
   cafeDescription,
 } from "@/lib/seo/business";
+import { defaultOpenGraphImage, siteKeywords } from "@/lib/seo/metadata";
 import { resolveMediaMentions } from "@/lib/seo/media";
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "MINORU cafe",
-  description: "地域にひらかれた小さなカフェ。ワッフルやドリンクをゆっくりお楽しみください。",
+  title: {
+    absolute: "MINORU cafe | 高崎市吉井町のワッフルとコーヒーのカフェ",
+  },
+  description:
+    "群馬県高崎市吉井町のMINORU cafe公式サイト。ワッフル、コーヒー、季節限定メニュー、テイクアウト、アクセス、駐車場情報をお届けします。",
+  keywords: siteKeywords,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "MINORU cafe",
-    description: "地域にひらかれた小さなカフェ。ワッフルやドリンクをゆっくりお楽しみください。",
+    title: "MINORU cafe | 高崎市吉井町のワッフルとコーヒーのカフェ",
+    description:
+      "群馬県高崎市吉井町のMINORU cafe公式サイト。ワッフル、コーヒー、季節限定メニュー、テイクアウト、アクセス、駐車場情報をお届けします。",
     url: "/",
+    siteName: "MINORU cafe",
+    locale: "ja_JP",
+    type: "website",
+    images: [defaultOpenGraphImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MINORU cafe | 高崎市吉井町のワッフルとコーヒーのカフェ",
+    description:
+      "群馬県高崎市吉井町のMINORU cafe公式サイト。ワッフル、コーヒー、季節限定メニュー、テイクアウト、アクセス、駐車場情報をお届けします。",
+    images: [defaultOpenGraphImage.url],
   },
 };
 

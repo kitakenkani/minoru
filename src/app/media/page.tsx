@@ -7,20 +7,17 @@ import {
   getMediaMentionThumbnailUrl,
   resolveMediaMentions,
 } from "@/lib/seo/media";
+import { createPageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "掲載・紹介",
   description:
-    "MINORU cafeが紹介されたメディア記事、ローカルメディア、グルメサイト、SNS投稿のリンクをまとめています。",
-  openGraph: {
-    title: "掲載・紹介 | MINORU cafe",
-    description:
-      "MINORU cafeが紹介されたメディア記事、ローカルメディア、グルメサイト、SNS投稿のリンクをまとめています。",
-    url: "/media",
-  },
-};
+    "MINORU cafeが紹介された地域メディア、グルメサイト、InstagramなどのSNS投稿をまとめています。",
+  path: "/media",
+  keywords: ["メディア掲載", "Instagram紹介", "群馬グルメ", "高崎グルメ"],
+});
 
 export default async function MediaPage() {
   const mediaMentions = resolveMediaMentions(await getMediaMentions());

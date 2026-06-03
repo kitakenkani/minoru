@@ -5,6 +5,11 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { getSiteSettings } from "@/lib/sanity/fetchers";
+import {
+  defaultOpenGraphImage,
+  localMetaOther,
+  siteKeywords,
+} from "@/lib/seo/metadata";
 import { siteUrl } from "@/lib/seo/site";
 
 const notoSerifJP = Noto_Serif_JP({
@@ -15,24 +20,46 @@ const notoSerifJP = Noto_Serif_JP({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: "MINORU cafe",
   title: {
     default: "MINORU cafe",
     template: "%s | MINORU cafe",
   },
-  description: "MINORU cafe の公式サイト",
+  description:
+    "群馬県高崎市吉井町のMINORU cafe公式サイト。ワッフル、コーヒー、季節限定メニュー、テイクアウト、アクセス、駐車場情報をお届けします。",
+  keywords: siteKeywords,
+  alternates: {
+    canonical: "/",
+  },
+  category: "cafe",
+  creator: "MINORU cafe",
+  publisher: "MINORU cafe",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     siteName: "MINORU cafe",
     locale: "ja_JP",
     type: "website",
     title: "MINORU cafe",
-    description: "MINORU cafe の公式サイト",
+    description:
+      "群馬県高崎市吉井町のMINORU cafe公式サイト。ワッフル、コーヒー、季節限定メニュー、テイクアウト、アクセス、駐車場情報をお届けします。",
+    url: "/",
+    images: [defaultOpenGraphImage],
   },
   twitter: {
     card: "summary_large_image",
+    title: "MINORU cafe",
+    description:
+      "群馬県高崎市吉井町のMINORU cafe公式サイト。ワッフル、コーヒー、季節限定メニュー、テイクアウト、アクセス、駐車場情報をお届けします。",
+    images: [defaultOpenGraphImage.url],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
+  other: localMetaOther,
 };
 
 export default async function RootLayout({

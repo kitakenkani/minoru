@@ -2,20 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { buildFaqJsonLd, defaultFaqItems } from "@/lib/seo/business";
+import { createPageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "よくある質問",
   description:
-    "MINORU cafeの場所、駐車場、営業時間、予約、テイクアウト、支払い方法、子ども連れや車いすでの利用についてのよくある質問。",
-  openGraph: {
-    title: "よくある質問 | MINORU cafe",
-    description:
-      "MINORU cafeの場所、駐車場、営業時間、予約、テイクアウト、支払い方法、子ども連れや車いすでの利用についてのよくある質問。",
-    url: "/faq",
-  },
-};
+    "MINORU cafeの場所、駐車場、営業時間、予約不可、テイクアウト、支払い方法、子ども連れや車いすでの利用についてのよくある質問。",
+  path: "/faq",
+  keywords: ["予約不可", "支払い方法", "ベビーカー", "車いす", "FAQ"],
+});
 
 export default function FaqPage() {
   const faqJsonLd = buildFaqJsonLd();

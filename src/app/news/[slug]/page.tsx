@@ -14,6 +14,7 @@ import {
   getSiteSettings,
 } from "@/lib/sanity/fetchers";
 import { urlFor } from "@/lib/sanity/image";
+import { defaultOpenGraphImage, siteKeywords } from "@/lib/seo/metadata";
 
 export const revalidate = 300;
 
@@ -31,26 +32,43 @@ export async function generateMetadata({
   const news = await getNewsDetail(slug);
   if (!news) return {};
 
-  const title = news.seoTitle ?? news.title;
+  const title = (news.seoTitle ?? news.title).replace(
+    /\s*\|\s*MINORU cafe$/,
+    ""
+  );
   const description = news.seoDescription ?? news.excerpt;
+  const thumbnail = news.mainImage
+    ? {
+        url: urlFor(news.mainImage).width(1200).height(630).fit("crop").url(),
+        width: 1200,
+        height: 630,
+        alt: news.title,
+      }
+    : defaultOpenGraphImage;
 
   return {
-    title,
+    title: {
+      absolute: `${title} | MINORU cafe`,
+    },
     description,
+    keywords: [...siteKeywords, news.category?.title].filter(Boolean) as string[],
+    alternates: {
+      canonical: `/news/${slug}`,
+    },
     openGraph: {
       title: `${title} | MINORU cafe`,
       description: description ?? undefined,
       type: "article",
       url: `/news/${slug}`,
-      ...(news.mainImage && {
-        images: [
-          {
-            url: urlFor(news.mainImage).width(1200).height(630).url(),
-            width: 1200,
-            height: 630,
-          },
-        ],
-      }),
+      siteName: "MINORU cafe",
+      locale: "ja_JP",
+      images: [thumbnail],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | MINORU cafe`,
+      description: description ?? undefined,
+      images: [thumbnail.url],
     },
   };
 }
@@ -81,7 +99,7 @@ export default async function NewsDetailPage({
     publisher: { "@type": "Organization", name: "MINORU cafe", url: siteUrl },
     ...(news.excerpt && { description: news.excerpt }),
     ...(news.mainImage && {
-      image: urlFor(news.mainImage).width(1200).height(630).url(),
+      image: urlFor(news.mainImage).width(1200).height(630).fit("crop").url(),
     }),
   };
 

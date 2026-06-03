@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
+import { createPageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "カフェについて",
-  description: "MINORU cafe のコンセプト・空間・地域との関わりについて",
-  openGraph: {
-    title: "カフェについて | MINORU cafe",
-    description: "MINORU cafe のコンセプト・空間・地域との関わりについて",
-    url: "/about",
-  },
-};
+  description:
+    "群馬県高崎市吉井町のMINORU cafeのコンセプト、空間、地域との関わりについてご紹介します。",
+  path: "/about",
+  keywords: ["カフェ空間", "リノベーションカフェ", "地域のカフェ"],
+});
 
 export default function AboutPage() {
   return (

@@ -4,20 +4,17 @@ import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/common/Badge";
 import { getMenuItems } from "@/lib/sanity/fetchers";
 import { urlFor } from "@/lib/sanity/image";
+import { createPageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "メニュー",
   description:
-    "群馬県高崎市吉井町のMINORU cafeのメニュー一覧。ワッフル、コーヒー、ドリンク、季節限定メニューなどをご紹介します。",
-  openGraph: {
-    title: "メニュー | MINORU cafe",
-    description:
-      "群馬県高崎市吉井町のMINORU cafeのメニュー一覧。ワッフル、コーヒー、ドリンク、季節限定メニューなどをご紹介します。",
-    url: "/menu",
-  },
-};
+    "群馬県高崎市吉井町のMINORU cafeのメニュー一覧。ワッフル、コーヒー、ドリンク、季節限定メニュー、テイクアウトをご紹介します。",
+  path: "/menu",
+  keywords: ["ワッフルメニュー", "カフェメニュー", "テイクアウト"],
+});
 
 const categoryOrder = ["seasonal", "waffle", "drink", "food", "dessert", "other"];
 

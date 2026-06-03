@@ -2,18 +2,17 @@ import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { NewsCard } from "@/components/news/NewsCard";
 import { getNewsList } from "@/lib/sanity/fetchers";
+import { createPageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "お知らせ",
-  description: "MINORU cafe からのお知らせ・イベント情報",
-  openGraph: {
-    title: "お知らせ | MINORU cafe",
-    description: "MINORU cafe からのお知らせ・イベント情報",
-    url: "/news",
-  },
-};
+  description:
+    "MINORU cafeからの営業案内、季節限定メニュー、イベント、展示、カフェのお知らせをお届けします。",
+  path: "/news",
+  keywords: ["営業案内", "季節限定メニュー", "イベント", "展示"],
+});
 
 export default async function NewsPage() {
   const newsList = await getNewsList();
