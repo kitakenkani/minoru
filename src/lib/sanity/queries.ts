@@ -105,3 +105,18 @@ export const menuItemsQuery = groq`
     isSeasonal
   }
 `;
+
+// 掲載・紹介一覧（公開中のみ）
+export const mediaMentionsQuery = groq`
+  *[_type == "mediaMention" && isPublished == true] | order(coalesce(sortOrder, 9999) asc, publishedAt desc) {
+    _id,
+    title,
+    publisher,
+    publishedAt,
+    url,
+    category,
+    description,
+    thumbnailImage,
+    thumbnailUrl
+  }
+`;

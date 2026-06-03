@@ -1,6 +1,6 @@
 import { urlFor } from "@/lib/sanity/image";
 import { siteUrl } from "@/lib/seo/site";
-import type { SiteSettings } from "@/types";
+import type { MediaMention, SiteSettings } from "@/types";
 
 export const cafeDescription =
   "MINORU cafeは、群馬県高崎市吉井町にあるワッフルとコーヒーのお店です。地域にひらかれた小さなカフェとして、日々の暮らしの中にほっとできる時間をお届けします。";
@@ -128,7 +128,10 @@ function buildOpeningHoursSpecification(businessHours?: string) {
   ];
 }
 
-export function buildLocalBusinessJsonLd(settings: SiteSettings | null) {
+export function buildLocalBusinessJsonLd(
+  settings: SiteSettings | null,
+  mediaMentions: MediaMention[] = []
+) {
   const image = settings?.mainVisual
     ? urlFor(settings.mainVisual).width(1200).height(630).fit("crop").url()
     : undefined;
@@ -150,6 +153,12 @@ export function buildLocalBusinessJsonLd(settings: SiteSettings | null) {
     hasMenu: `${siteUrl}/menu`,
     hasMap: settings?.googleMapUrl,
     mainEntityOfPage: siteUrl,
+    subjectOf: mediaMentions.map((mention) => ({
+      "@type": "CreativeWork",
+      name: mention.title,
+      url: mention.url,
+      publisher: mention.publisher,
+    })),
     amenityFeature: [
       {
         "@type": "LocationFeatureSpecification",

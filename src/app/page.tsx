@@ -3,13 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { NewsCard } from "@/components/news/NewsCard";
-import { getSiteSettings, getLatestNews } from "@/lib/sanity/fetchers";
+import {
+  getLatestNews,
+  getMediaMentions,
+  getSiteSettings,
+} from "@/lib/sanity/fetchers";
 import { urlFor } from "@/lib/sanity/image";
 import {
   buildLocalBusinessJsonLd,
   buildWebSiteJsonLd,
   cafeDescription,
 } from "@/lib/seo/business";
+import { resolveMediaMentions } from "@/lib/seo/media";
 
 export const revalidate = 300;
 
@@ -24,12 +29,14 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [settings, latestNews] = await Promise.all([
+  const [settings, latestNews, fetchedMediaMentions] = await Promise.all([
     getSiteSettings(),
     getLatestNews(),
+    getMediaMentions(),
   ]);
 
-  const localBusinessJsonLd = buildLocalBusinessJsonLd(settings);
+  const mediaMentions = resolveMediaMentions(fetchedMediaMentions);
+  const localBusinessJsonLd = buildLocalBusinessJsonLd(settings, mediaMentions);
   const webSiteJsonLd = buildWebSiteJsonLd();
 
   return (
@@ -121,7 +128,7 @@ export default async function HomePage() {
       {/* 導線セクション */}
       <section className="border-t border-cream-200 py-16">
         <Container>
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <Link
               href="/about"
               className="rounded-lg bg-white p-8 text-center shadow-sm transition-all hover:shadow-md hover:border-brand-200 border border-transparent"
@@ -149,6 +156,17 @@ export default async function HomePage() {
               </p>
               <p className="text-sm text-stone-500">
                 {settings?.address ?? "営業時間・場所"}
+              </p>
+            </Link>
+            <Link
+              href="/media"
+              className="rounded-lg bg-white p-8 text-center shadow-sm transition-all hover:shadow-md hover:border-brand-200 border border-transparent"
+            >
+              <p className="mb-2 text-lg font-medium tracking-wider text-brand-700">
+                掲載・紹介
+              </p>
+              <p className="text-sm text-stone-500">
+                メディア・SNSでの紹介
               </p>
             </Link>
           </div>

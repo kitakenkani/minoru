@@ -49,3 +49,16 @@ After deployment, submit the sitemap in Google Search Console:
 ```text
 https://minoru-cafe.vercel.app/sitemap.xml
 ```
+
+## Sanity CMS
+
+`/studio` で以下を管理できます。
+
+- お知らせ
+- メニュー
+- サイト設定
+- 掲載・紹介
+
+掲載・紹介では、媒体名、掲載日、掲載元URL、カテゴリ、紹介文、公開状態、
+並び順、サムネイル画像を管理できます。サムネイルはSanityにアップロードした
+画像を優先し、未設定の場合は外部サムネイルURLを使用します。

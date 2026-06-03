@@ -1,6 +1,7 @@
 import { client } from "./client";
 import {
   latestNewsQuery,
+  mediaMentionsQuery,
   menuItemsQuery,
   newsDetailQuery,
   newsListQuery,
@@ -8,7 +9,13 @@ import {
   relatedNewsQuery,
   siteSettingsQuery,
 } from "./queries";
-import type { MenuItem, NewsDetail, NewsSummary, SiteSettings } from "@/types";
+import type {
+  MediaMention,
+  MenuItem,
+  NewsDetail,
+  NewsSummary,
+  SiteSettings,
+} from "@/types";
 
 const revalidate = 300; // 5分
 
@@ -56,4 +63,9 @@ export async function getRelatedNews(
 export async function getMenuItems(): Promise<MenuItem[]> {
   if (!isSanityConfigured()) return [];
   return client.fetch(menuItemsQuery, {}, { next: { revalidate } });
+}
+
+export async function getMediaMentions(): Promise<MediaMention[]> {
+  if (!isSanityConfigured()) return [];
+  return client.fetch(mediaMentionsQuery, {}, { next: { revalidate } });
 }

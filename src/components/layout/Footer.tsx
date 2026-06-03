@@ -24,6 +24,11 @@ export async function Footer() {
                 よくある質問
               </Link>
             </li>
+            <li>
+              <Link href="/media" className="hover:text-brand-500">
+                掲載・紹介
+              </Link>
+            </li>
             {settings?.instagramUrl && (
               <li>
                 <a

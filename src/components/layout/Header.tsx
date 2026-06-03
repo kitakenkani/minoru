@@ -9,6 +9,7 @@ const navItems = [
   { label: "メニュー", href: "/menu" },
   { label: "アクセス", href: "/access" },
   { label: "よくある質問", href: "/faq" },
+  { label: "掲載", href: "/media" },
 ];
 
 interface HeaderProps {
@@ -30,7 +31,7 @@ export function Header({ instagramUrl }: HeaderProps) {
         </Link>
 
         {/* デスクトップ用ナビ */}
-        <nav className="hidden sm:block">
+        <nav className="hidden md:block">
           <ul className="flex items-center gap-6">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -57,7 +58,7 @@ export function Header({ instagramUrl }: HeaderProps) {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3 sm:hidden">
+        <div className="flex items-center gap-3 md:hidden">
           {instagramUrl && (
             <a
               href={instagramUrl}
@@ -97,7 +98,7 @@ export function Header({ instagramUrl }: HeaderProps) {
 
       {/* モバイル用ナビ */}
       {isOpen && (
-        <nav className="sm:hidden border-t border-brand-100">
+        <nav className="border-t border-brand-100 md:hidden">
           <ul>
             {navItems.map((item) => (
               <li key={item.href}>

@@ -46,6 +46,18 @@ export interface MenuItem {
   isSeasonal?: boolean;
 }
 
+export interface MediaMention {
+  _id: string;
+  title: string;
+  publisher: string;
+  publishedAt: string;
+  url: string;
+  category: string;
+  description: string;
+  thumbnailImage?: SanityImage;
+  thumbnailUrl?: string;
+}
+
 export interface SiteSettings {
   siteTitle: string;
   description: string;
