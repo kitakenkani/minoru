@@ -120,6 +120,94 @@
     },
     {
       "_type": "block",
+      "_key": "farm-heading",
+      "style": "h2",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "farm-heading-1",
+          "text": "フルーツオンザヒルさんについて",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "farm-about",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "farm-about-1",
+          "text": "フルーツオンザヒルさんは、高崎市吉井町小串にある観光農園です。自然豊かな丘の上、約2.7haの土地でブルーベリー、ぶどう、いちじく、グレープフルーツ、レモン、キウイフルーツ、フェイジョアなどを栽培されています。",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "farm-blueberry",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "farm-blueberry-1",
+          "text": "ブルーベリーは40種類・約3000本。公式サイトでは、8月現在「ラビットアイブルーベリー」が食べ頃として紹介されています。7月上旬から9月上旬ごろまで楽しめる品種で、夏の味わいとして今回のメニューにもぴったりです。",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "farm-season",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "farm-season-1",
+          "text": "また、2026年8月8日からは藤稔・ブラックビート・ナガノパープルなどのぶどう販売も始まっており、シャインマスカットは8月13日ごろから販売開始予定と案内されています。",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "farm-info",
+      "style": "normal",
+      "markDefs": [
+        {
+          "_type": "link",
+          "_key": "farm-site-link",
+          "href": "https://fruitonthehill.co.jp/"
+        }
+      ],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "farm-info-1",
+          "text": "所在地は群馬県高崎市吉井町小串750-5。お問い合わせは027-388-8411、農園直通は090-7235-0280です。開園時間や収穫状況は時期により変わるため、詳しくは",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "farm-info-2",
+          "text": "フルーツオンザヒルさん公式サイト",
+          "marks": ["farm-site-link"]
+        },
+        {
+          "_type": "span",
+          "_key": "farm-info-3",
+          "text": "をご確認ください。",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
       "_key": "finish",
       "style": "normal",
       "markDefs": [],
