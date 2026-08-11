@@ -1,0 +1,138 @@
+{
+  "_id": "drafts.fruit-on-the-hill-blueberry-collab-2026",
+  "title": "吉井町「フルーツオンザヒル」さんの朝摘みブルーベリーを使った季節限定メニューが始まりました",
+  "slug": {
+    "current": "fruit-on-the-hill-blueberry-collab-2026"
+  },
+  "publishedAt": "2026-08-11T09:00:00+09:00",
+  "excerpt": "同じ吉井町にある「フルーツオンザヒル」さんの朝摘みブルーベリーを使った、夏だけの季節限定メニューをご用意しました。",
+  "mainImage": {
+    "_type": "image",
+    "asset": {
+      "_type": "reference",
+      "_ref": "image-634a027c415b892c746ea3c0460b0dbaa58732ff-1024x1280-jpg"
+    }
+  },
+  "category": {
+    "title": "お知らせ",
+    "slug": {
+      "current": "oshirase"
+    }
+  },
+  "body": [
+    {
+      "_type": "block",
+      "_key": "intro",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "intro-1",
+          "text": "この夏、MINORU cafeでは、同じ吉井町にある「フルーツオンザヒル」さんの朝摘みブルーベリーを使用した季節限定メニューを販売しています。",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "collab",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "collab-1",
+          "text": "契約農家さんから届く新鮮で香り高いブルーベリーをふんだんに使い、甘酸っぱさがクセになる夏の一品に仕上げました。",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "menu-heading",
+      "style": "h2",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "menu-heading-1",
+          "text": "季節限定メニュー",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "waffle",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "waffle-1",
+          "text": "・朝摘みベリーとクリームチーズの甘酸っぱいワッフル　¥900",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "smoothie",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "smoothie-1",
+          "text": "・朝摘みベリーのひんやりソイスムージー　¥600",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "set",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "set-1",
+          "text": "・朝摘み！ひんやり納涼セット　¥1,400",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "set-detail",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "set-detail-1",
+          "text": "セット内容は「朝摘みベリーとクリームチーズの甘酸っぱいワッフル」と「朝摘みベリーのひんやりソイスムージー」です。",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "finish",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "finish-1",
+          "text": "暑い夏でも楽しめる、爽やかで冷たいスイーツです。吉井町の果実のおいしさを、ぜひ店内でお楽しみください。",
+          "marks": []
+        }
+      ]
+    }
+  ],
+  "seoTitle": "フルーツオンザヒルさんの朝摘みブルーベリーを使った季節限定メニュー",
+  "seoDescription": "MINORU cafeでは、吉井町「フルーツオンザヒル」さんの朝摘みブルーベリーを使った夏限定ワッフルとソイスムージーを販売しています。"
+}
