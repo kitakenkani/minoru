@@ -10,7 +10,7 @@
     "_type": "image",
     "asset": {
       "_type": "reference",
-      "_ref": "image-634a027c415b892c746ea3c0460b0dbaa58732ff-1024x1280-jpg"
+      "_ref": "image-a44a9e5d75784eeac24d1ea91ff8049756c9306a-961x1280-jpg"
     }
   },
   "category": {
@@ -47,6 +47,15 @@
           "marks": []
         }
       ]
+    },
+    {
+      "_type": "image",
+      "_key": "blueberry-field-image",
+      "asset": {
+        "_type": "reference",
+        "_ref": "image-7776e1d3166dcd9e2e3cab1e6d113f7621cfb397-720x1280-jpg"
+      },
+      "alt": "フルーツオンザヒルさんの農園で収穫された朝摘みブルーベリー"
     },
     {
       "_type": "block",
@@ -145,6 +154,15 @@
           "marks": []
         }
       ]
+    },
+    {
+      "_type": "image",
+      "_key": "fruit-on-the-hill-farm-image",
+      "asset": {
+        "_type": "reference",
+        "_ref": "image-76de4556c9c003a5c18faa8ea8f94b9bde6a669f-1280x605-jpg"
+      },
+      "alt": "フルーツオンザヒルさんの農園外観"
     },
     {
       "_type": "block",
