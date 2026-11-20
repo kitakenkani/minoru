@@ -5,6 +5,7 @@ import { Badge } from "@/components/common/Badge";
 import { getMenuItems } from "@/lib/sanity/fetchers";
 import { urlFor } from "@/lib/sanity/image";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { menuImageFallbacks } from "@/lib/menu/images";
 
 export const revalidate = 300;
 
@@ -98,19 +99,24 @@ export default async function MenuPage() {
             )}
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
-            {categoryItems.map((item) => (
+            {categoryItems.map((item) => {
+              const imageSrc = item.image
+                ? urlFor(item.image).width(320).height(320).fit("max").url()
+                : menuImageFallbacks[item._id];
+              return (
               <div
                 key={item._id}
-                className="flex gap-4 rounded-lg bg-white p-4 shadow-sm border border-cream-200"
+                className="flex flex-col gap-4 rounded-lg bg-white p-4 shadow-sm border border-cream-200 sm:flex-row"
               >
-                {item.image && (
-                  <div className="relative h-28 w-20 shrink-0 overflow-hidden rounded">
+                {imageSrc && (
+                  <div className="relative aspect-square w-full shrink-0 self-start overflow-hidden rounded sm:w-32">
                     <Image
-                      src={urlFor(item.image).width(160).height(224).url()}
+                      src={imageSrc}
                       alt={item.name}
                       fill
                       unoptimized
-                      className="object-cover"
+                      sizes="(max-width: 639px) 100vw, 128px"
+                      className="object-contain"
                     />
                   </div>
                 )}
@@ -133,7 +139,8 @@ export default async function MenuPage() {
                   {item.priceNote && <p className="whitespace-pre-line text-sm leading-6 text-stone-600">{item.priceNote}</p>}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </section>
         );
