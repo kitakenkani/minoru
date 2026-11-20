@@ -23,12 +23,14 @@ export const menuItem = defineType({
       type: "string",
       options: {
         list: [
+          { title: "モーニング", value: "morning" },
           { title: "季節限定", value: "seasonal" },
           { title: "ワッフル", value: "waffle" },
           { title: "ドリンク", value: "drink" },
           { title: "フード", value: "food" },
           { title: "デザート", value: "dessert" },
           { title: "その他", value: "other" },
+          { title: "テイクアウト", value: "takeout" },
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -43,6 +45,18 @@ export const menuItem = defineType({
       name: "price",
       title: "価格（円）",
       type: "number",
+    }),
+    defineField({
+      name: "setPrice",
+      title: "セット価格（税込・円）",
+      type: "number",
+      validation: (Rule) => Rule.min(0),
+    }),
+    defineField({
+      name: "priceNote",
+      title: "価格・追加注文の補足",
+      type: "text",
+      rows: 2,
     }),
     defineField({
       name: "image",

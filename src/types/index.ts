@@ -42,6 +42,8 @@ export interface MenuItem {
   category: string;
   description?: string;
   price?: number;
+  setPrice?: number;
+  priceNote?: string;
   image?: SanityImage;
   isSeasonal?: boolean;
 }

@@ -101,6 +101,8 @@ export const menuItemsQuery = groq`
     category,
     description,
     price,
+    setPrice,
+    priceNote,
     image,
     isSeasonal
   }

@@ -16,18 +16,22 @@ export const metadata: Metadata = createPageMetadata({
   keywords: ["ワッフルメニュー", "カフェメニュー", "テイクアウト"],
 });
 
-const categoryOrder = ["seasonal", "waffle", "drink", "food", "dessert", "other"];
+const categoryOrder = ["morning", "seasonal", "food", "waffle", "drink", "dessert", "takeout", "other"];
 
 const categoryLabels: Record<string, string> = {
+  morning: "モーニング",
   seasonal: "季節限定",
-  waffle: "ワッフル",
+  waffle: "スイーツワッフル",
   drink: "ドリンク",
-  food: "フード",
+  food: "お食事ワッフル",
   dessert: "デザート",
   other: "その他",
+  takeout: "テイクアウト",
 };
 
 const categoryDescriptions: Record<string, string> = {
+  morning: "朝のひとときに楽しむモーニングプレート。単品とセットをご用意しています。",
+  takeout: "ワッフルやドリンクをご自宅でも。お持ち帰りの商品はこちらからお選びいただけます。",
   seasonal:
     "旬の素材や季節の気分に合わせて楽しめる、期間限定のメニューです。新しい味はお知らせやInstagramでも紹介しています。",
   waffle:
@@ -58,12 +62,22 @@ export default async function MenuPage() {
         <h1 className="mb-4 text-2xl font-medium tracking-wider text-brand-700">
           メニュー
         </h1>
-        <p className="text-sm leading-8 text-stone-600">
-          MINORU cafeでは、ワッフル、コーヒー、ドリンク、季節限定メニューなどを
-          ご用意しています。群馬県高崎市吉井町で、日常の休憩やおでかけの途中に
-          立ち寄れるカフェとして、店頭のメニューを随時更新しています。
+        <p className="text-base leading-8 text-stone-600">
+          朝のモーニングから、お食事や甘いワッフル、季節の一皿まで。
+          お好みのドリンクと一緒に、ゆっくりお楽しみください。
         </p>
+        <p className="mt-4 text-sm text-stone-600">価格はすべて税込です。セット内容・提供時間は店頭でご案内します。</p>
       </div>
+
+      {items.length > 0 && (
+        <nav aria-label="メニューのカテゴリ" className="mb-10 flex flex-wrap gap-2">
+          {categoryOrder.filter((category) => grouped[category]).map((category) => (
+            <a key={category} href={`#${category}`} className="rounded-full border border-brand-100 bg-white px-4 py-2 text-sm text-brand-700 transition-colors hover:bg-brand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">
+              {categoryLabels[category]}
+            </a>
+          ))}
+        </nav>
+      )}
 
       {Object.keys(grouped).length === 0 && (
         <p className="text-sm text-stone-400">現在メニュー情報はありません</p>
@@ -72,13 +86,13 @@ export default async function MenuPage() {
       {categoryOrder.filter((cat) => grouped[cat]).map((category) => {
         const categoryItems = grouped[category];
         return (
-        <section key={category} className="mb-12">
+        <section key={category} id={category} aria-labelledby={`${category}-heading`} className="mb-12 scroll-mt-24">
           <div className="mb-6 border-b border-brand-100 pb-3">
-            <h2 className="text-lg font-medium text-brand-600">
+            <h2 id={`${category}-heading`} className="text-lg font-medium text-brand-600">
               {categoryLabels[category] ?? category}
             </h2>
             {categoryDescriptions[category] && (
-              <p className="mt-2 text-xs leading-6 text-stone-500">
+              <p className="mt-2 text-sm leading-6 text-stone-600">
                 {categoryDescriptions[category]}
               </p>
             )}
@@ -90,9 +104,9 @@ export default async function MenuPage() {
                 className="flex gap-4 rounded-lg bg-white p-4 shadow-sm border border-cream-200"
               >
                 {item.image && (
-                  <div className="relative w-20 shrink-0 overflow-hidden rounded">
+                  <div className="relative h-28 w-20 shrink-0 overflow-hidden rounded">
                     <Image
-                      src={urlFor(item.image).width(80).height(160).url()}
+                      src={urlFor(item.image).width(160).height(224).url()}
                       alt={item.name}
                       fill
                       unoptimized
@@ -100,21 +114,23 @@ export default async function MenuPage() {
                     />
                   </div>
                 )}
-                <div className="flex flex-col gap-1">
+                <div className="flex min-w-0 flex-1 flex-col gap-2">
                   <div className="flex items-start gap-2">
-                    <p className="flex-1 min-w-0 font-medium text-stone-800">{item.name}</p>
+                    <h3 className="flex-1 min-w-0 font-medium text-stone-800">{item.name}</h3>
                     {item.isSeasonal && <Badge label="季節限定" />}
                   </div>
                   {item.description && (
-                    <p className="text-xs leading-relaxed text-stone-500">
+                    <p className="text-sm leading-relaxed text-stone-600">
                       {item.description}
                     </p>
                   )}
                   {item.price != null && (
-                    <p className="text-sm text-brand-600">
-                      ¥{item.price.toLocaleString()}
-                    </p>
+                    <dl className="mt-1 flex flex-wrap gap-x-5 gap-y-1 text-sm text-brand-700">
+                      <div className="flex gap-2"><dt>{item.setPrice != null ? "単品" : "価格"}</dt><dd className="font-medium tabular-nums">¥{item.price.toLocaleString("ja-JP")}</dd></div>
+                      {item.setPrice != null && <div className="flex gap-2"><dt>セット</dt><dd className="font-medium tabular-nums">¥{item.setPrice.toLocaleString("ja-JP")}</dd></div>}
+                    </dl>
                   )}
+                  {item.priceNote && <p className="whitespace-pre-line text-sm leading-6 text-stone-600">{item.priceNote}</p>}
                 </div>
               </div>
             ))}
